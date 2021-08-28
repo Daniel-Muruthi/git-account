@@ -2,4 +2,8 @@
 <input type="text" class="form-control" [(ngModel)]="username">
 <!-- <p class="my-2" >You have entered: {{username}}</p> -->
 <button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
-<h3>{{identity}}</h3>
+<h3 class="nameGit" *ngIf="jina; else def">{{identity}}</h3>
+<ng-template #def>
+    <h3 class="defaultGit">Please enter your GitHub username!</h3>
+</ng-template>
+

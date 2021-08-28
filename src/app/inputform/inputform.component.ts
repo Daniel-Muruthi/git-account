@@ -10,6 +10,7 @@ export class InputformComponent implements OnInit {
   buttonstatus=false;
   username=""
   identity=""
+  jina=false;
 
   constructor() {
     // This set an enable timeout for button toggle status
@@ -25,6 +26,7 @@ export class InputformComponent implements OnInit {
   }
 
   nameOutput(){
+    this.jina=true;
     this.identity= `Your github username is : ${this.username}`
   }
 
