@@ -12,9 +12,10 @@ export class InputformComponent implements OnInit {
   identity=""
 
   constructor() {
-    setTimeout(()=>{
-      this.buttonstatus=true;
-    },3000);
+    // This set an enable timeout for button toggle status
+    // setTimeout(()=>{
+    //   this.buttonstatus=true;
+    // },3000);
   }
 
   ngOnInit(): void {

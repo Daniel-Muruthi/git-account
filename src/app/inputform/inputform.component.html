@@ -1,5 +1,5 @@
 <h3>GitHub UserName</h3>
 <input type="text" class="form-control" [(ngModel)]="username">
 <!-- <p class="my-2" >You have entered: {{username}}</p> -->
-<button class="my-3 btn btn-dark" [disabled]=!buttonstatus (click)="nameOutput()">Enter</button>
+<button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
 <h3>{{identity}}</h3>
