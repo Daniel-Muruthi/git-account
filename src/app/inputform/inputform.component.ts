@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InputformComponent implements OnInit {
 
   username=""
+  identity=""
 
   constructor() { }
 
@@ -15,6 +16,9 @@ export class InputformComponent implements OnInit {
   }
   gitName(event: Event){
     this.username=(<HTMLInputElement>event.target).value
+  }
+  nameOutput(){
+    this.identity= `Your github username is : ${this.username}`
   }
 
 }
