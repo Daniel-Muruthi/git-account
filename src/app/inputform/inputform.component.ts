@@ -7,16 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputformComponent implements OnInit {
 
+  buttonstatus=false;
   username=""
   identity=""
 
-  constructor() { }
+  constructor() {
+    setTimeout(()=>{
+      this.buttonstatus=true;
+    },3000);
+  }
 
   ngOnInit(): void {
   }
   gitName(event: Event){
     this.username=(<HTMLInputElement>event.target).value
   }
+
   nameOutput(){
     this.identity= `Your github username is : ${this.username}`
   }
