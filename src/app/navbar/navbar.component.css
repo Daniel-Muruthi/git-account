@@ -1,0 +1,16 @@
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    border:2px solid black;
+    box-shadow: 0px 0px 4px 1px grey;
+    margin:1rem;
+    align-items:center;
+}
+ul{
+    margin:1rem;
+}
+li{
+    text-decoration:none;
+    list-style-type: none;
+    font-size:x-large;
+}
