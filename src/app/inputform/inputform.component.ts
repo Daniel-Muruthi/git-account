@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { GetgitaccountService } from '../getgitaccount.service';
 
@@ -18,7 +19,7 @@ export class InputformComponent {
 
   users: string[]=[]
 
-  accountShown: string[]=[]
+  // accountShown: string[]=[]
 
   
 
@@ -40,7 +41,7 @@ export class InputformComponent {
 
     this.originalGit=(this.username).split(" ").join("")
     this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
-      this.users = data
+      this.users = (data)
       console.table(data)
     })
   }
