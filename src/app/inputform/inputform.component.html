@@ -15,11 +15,26 @@
     </button>
     <app-userlist [users]="users"></app-userlist>
 </div>
-<!-- <div>
-    <img src="{{users.avatar_url}}" height="100px" width="100px">
-</div> -->
-<img src="{{gitImg}}" alt="my image" height="200px" width="200px"> 
-<p>UserName: {{gitIdentityName}}</p>
+<div class="row col-sm-12">
+    <h2>Profile Picture</h2>
+    <div class="col-sm-7 ppic" style="border:1px solid black;">
+        <img src="{{gitImg}}" alt="user image" height="300px" width="300px" style="border-radius: 50%;"> 
+    </div>
+    <div class="col-sm-5">
+        <h3>User Information</h3>
+        <p>UserName: {{gitIdentityName}}</p>
+        <p>Location: {{gitLocation}}</p>
+        <div>
+            <h3>GitHub Repository</h3>
+            <iframe src="{{gitRepo}}" style="border: 1px solid black;">Repo</iframe>
+        </div>
+        <div class="btn btn-dark">
+            <a href="{{gitRepo}}" target="_blank" style="text-decoration: none; color: white;">Github Repos</a>
+        </div>
+    </div>
+</div>
+
+
 
 
 

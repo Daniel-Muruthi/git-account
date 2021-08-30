@@ -12,3 +12,8 @@
 .nameEntered{
     color:chocolate;
 }
+.ppic{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

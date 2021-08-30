@@ -18,6 +18,9 @@ export class InputformComponent {
   gitresult=""
   gitIdentityName: any
   gitImg: any='';
+  gitLocation: any
+  gitRepo: string=''
+  repoName= ''
 
   users: string[]=[]
 
@@ -45,9 +48,14 @@ export class InputformComponent {
     this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
       this.users = data
       this.gitImg= data.avatar_url
-
+      this.gitLocation= data.location
+      
       this.gitIdentityName = JSON.stringify(data.login)
+      this.repoName=(this.gitIdentityName).replace(/['"]+/g, '')
+      this.gitRepo= `https://github.com/${this.repoName}?tab=repositories`
+
       this.gitImg = JSON.parse(data.avatar_url)
+      // this.gitRepo= JSON.parse(data.repos_url)
     
     })
   }
@@ -58,7 +66,7 @@ export class InputformComponent {
   nameOutput(){
     this.jina=true;
     // this.repeats.push(this.username)
-    this.identity= `Your github username is : ${this.username}`
+    this.identity= `Click The Display Button Below To Search For The Account : ${this.username}`
     // this.originalGit=(this.username).split(" ").join("")
     // this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
     //   this.accountShown=data
