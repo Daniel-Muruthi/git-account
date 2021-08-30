@@ -16,6 +16,8 @@ export class InputformComponent {
   jina=false;
   // repeats: string[]=[]
   gitresult=""
+  gitIdentityName: any
+  gitImg: any='';
 
   users: string[]=[]
 
@@ -41,8 +43,12 @@ export class InputformComponent {
 
     this.originalGit=(this.username).split(" ").join("")
     this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
-      this.users = (data)
-      console.table(data)
+      this.users = data
+      this.gitImg= data.avatar_url
+
+      this.gitIdentityName = JSON.stringify(data.login)
+      this.gitImg = JSON.parse(data.avatar_url)
+    
     })
   }
   gitName(event: Event){
@@ -58,5 +64,7 @@ export class InputformComponent {
     //   this.accountShown=data
     // })
   }
+
+  
 
 }

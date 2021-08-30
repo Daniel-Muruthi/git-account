@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class GetgitaccountService {
 
+
   constructor(private http: HttpClient){
 
   }
+
 
   gitData():Observable<any>{
     
