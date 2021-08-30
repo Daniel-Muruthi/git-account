@@ -1,0 +1,13 @@
+<!-- <ul *ngFor ="let user of users">
+    <img src="{{user.avatar_url}}" height="100px" width="100px">
+    <h3>{{user.login}}</h3>
+    <p>{{user.repos_url}}</p>
+</ul> -->
+<p>{{users | json}}</p>
+<p *ngFor ="let user of users">
+    Name is : {{user?.id}}
+    <!-- <img src="{{user.avatar_url}}" height="100px" width="100px"> -->
+    {{users}}
+    {{users?.id))
+</p>
+
