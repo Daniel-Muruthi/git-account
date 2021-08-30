@@ -8,3 +8,7 @@
     background-color:rgba(248, 136, 136, 0.5);
     align-items:center;
 }
+/* ngclass attribute directive inserted class */
+.nameEntered{
+    color:chocolate;
+}

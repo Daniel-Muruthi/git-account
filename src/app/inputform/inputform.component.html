@@ -1,9 +1,22 @@
-<h3>GitHub UserName</h3>
+<label style="font-size:x-large; font-weight:bolder;">GitHub UserName</label>
 <input type="text" class="form-control" [(ngModel)]="username">
 <!-- <p class="my-2" >You have entered: {{username}}</p> -->
 <button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
-<h3 class="nameGit" *ngIf="jina; else def">{{identity}}</h3>
-<ng-template #def>
-    <h3 class="defaultGit">Please enter your GitHub username!</h3>
-</ng-template>
+<div >
+    <!-- *ngFor="let repeat of repeats" -->
+    <h3 class="nameGit" *ngIf="jina; else def" [ngClass]="{nameEntered: jina==true }">{{identity}}</h3>
+    <ng-template #def>
+        <h3 class="defaultGit">Please enter your GitHub username!</h3>
+    </ng-template>
+</div>
+<div>
+    <button class="btn btn-dark my-3" (click)="gitProfile()">
+        Display
+    </button>
+    <app-userlist [users]="users"></app-userlist>
+</div>
+<!-- <div>
+    <img src="{{users.avatar_url}}" height="100px" width="100px">
+</div> -->
+<app-userlist></app-userlist>
 
