@@ -1,37 +1,54 @@
-<label style="font-size:x-large; font-weight:bolder;">GitHub UserName</label>
-<input type="text" class="form-control" [(ngModel)]="username">
-<!-- <p class="my-2" >You have entered: {{username}}</p> -->
-<button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
-<div >
+<div class="row col-sm-12">
+    <div class="col-sm-6 mx-auto">
+        <label style="font-size:x-large; font-weight:bolder;" class="mt-5 mb-4">GitHub UserName</label>
+        <input placeholder="enter your GitHub UserName" type="text" class="form-control" [(ngModel)]="username" [(ngModel)]="originalGitRepo">
+        <!-- <p class="my-2" >You have entered: {{username}}</p> -->
+        <button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
+    </div>
+</div>
+<div class="col-sm-6 mx-auto">
     <!-- *ngFor="let repeat of repeats" -->
     <h3 class="nameGit" *ngIf="jina; else def" [ngClass]="{nameEntered: jina==true }">{{identity}}</h3>
     <ng-template #def>
-        <h3 class="defaultGit">Please enter your GitHub username!</h3>
+        <h3 class="defaultGit border rounded">Please enter your GitHub username!</h3>
     </ng-template>
-</div>
-<div>
     <button class="btn btn-dark my-3" (click)="gitProfile()">
         Display
     </button>
+</div>
+<div>
     <app-userlist [users]="users"></app-userlist>
 </div>
-<div class="card">
-    <div class="row col-sm-12">
-        <div class="col-sm-5 ppic" style="display:flex; flex-direction:column">
-            <h2 class="card-header mb-2" width="100%">Profile Picture</h2>
-            <img src="{{gitImg}}" alt="user image" height="300px" width="300px" style="border-radius: 50%;" class="card-body"> 
+<div class="card col-sm-9 mx-auto">
+    <div class="row col-sm-9" style="display:flex; justify-content: space-between">
+        <div class="col-sm-7 ppic" style="display:flex; flex-direction:column">
+            <img src="{{gitImg}}" alt="User Pic" height="300px" width="300px" style="border-radius: 50%;" class="card p2"> 
         </div>
-        <div class="col-sm-7">
-            <h3 class="card-header">User Information</h3>
-            <p>UserName: {{gitIdentityName}}</p>
-            <p>Location: {{gitLocation}}</p>
-            <div>
-                <h3>GitHub Repository</h3>
-                <iframe src="{{gitRepo}}" style="border: 1px solid black;">Repo</iframe>
-            </div>
-            <div class="btn btn-dark">
+        <div class="col-sm-5">
+            <h3 class="mt-2 mb-3">About</h3>
+            <hr>
+            <p class="text-primary font-weight-bold card p-2">USERNAME : {{repoName}}</p>
+            <p class="text-primary text-uppercase font-weight-bold card p-2">Location : {{gitLocation}}</p>
+            <!-- <div class="btn btn-dark">
                 <a href="{{gitRepo}}" target="_blank" style="text-decoration: none; color: white;">Github Repos</a>
-            </div>
+            </div> -->
+            <div class="text-primary text-uppercase font-weight-bold" style="display:flex; justify-content: space-around">
+                <p class="card p-2 mr-2">Followers : {{gitFollowers}}</p>
+                <p class="card p-2 mr-2">Following : {{gitFollowing}}</p>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="card">
+    <h3 class="text-center p-4">GitHub Repositories</h3>
+    <div style="display:flex !important; flex-wrap:wrap !important; justify-content: space-between;">
+        <div  *ngFor="let repo of gitRepo; let i = index;" class="col-sm-4 my-3 card">
+            <h3>{{i+1}}.</h3>
+            <h3 class="text-center">{{repo.name}}</h3>
+            <br>
+            <p class="font-italic text-center"><em>{{repo.description}}</em></p>
+            <br>
+            <a href="{{repo.html_url}}" target="_blank" class="btn btn-primary mx-auto mb-0" style="text-decoration: none; color:black; width: max-content">Visit Repository</a>
         </div>
     </div>
 </div>
