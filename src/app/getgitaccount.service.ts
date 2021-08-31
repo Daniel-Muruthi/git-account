@@ -26,7 +26,7 @@ export class GetgitaccountService {
     var gitUrl="https://api.github.com/users";
     // var gitUrl="2fa6de2e93fc5d13e3ef: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 https://api.github.com/users"
     // return this.http.get<any>(gitUrl);
-    let userRepo =(`${gitUrl}/${originalGitRepo}/repos?access_token=${environment.accessToken}`)
+    let userRepo =(`${gitUrl}/${originalGitRepo}/repos?access_token=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`)
 
     return this.http.get<any>(userRepo).pipe(retry(1), catchError(this.error_handler));
     

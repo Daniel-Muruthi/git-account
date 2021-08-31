@@ -20,8 +20,14 @@ export class InputformComponent {
   gitIdentityName: any
   gitImg: any='';
   gitLocation: any
-  gitRepo: string=''
-  repoName= ''
+  gitRepo: any[]=[] //repo container
+  gitRepoBody: any="" //api repo fetcher
+  repoName= '' //username
+  repoExtract="" // extract repo name from json
+  repoQuoteRemove="" //remove "" from repo display
+  repoNameFinal="" //repo display on DoM
+  gitFollowers=""
+  gitFollowing=""
 
   
 
@@ -57,10 +63,16 @@ export class InputformComponent {
       this.users = data
       this.gitImg= data.avatar_url
       this.gitLocation= data.location
+      this.gitFollowers=data.followers
+      this.gitFollowing=data.following
       
       this.gitIdentityName = JSON.stringify(data.login)
       this.repoName=(this.gitIdentityName).replace(/['"]+/g, '')
-      this.gitRepo= `https://github.com/${this.repoName}?tab=repositories`
+      // this.gitRepo= `https://github.com/${this.repoName}?tab=repositories`
+      this.gitRepoBody=fetch(`https://api.github.com/users/${this.repoName}/repos`).then((result)=>result.json()).then((data)=>{
+        this.gitRepo = data
+        console.table(data)
+      })
       
       
       this.gitImg = JSON.parse(data.avatar_url)
@@ -85,13 +97,13 @@ export class InputformComponent {
     
   }
 
-  getGitRepo(){
-    this.getgitaccount.gitDataRepo(this.originalGitRepo).subscribe((data)=>{
-      this.repoGit = data;
-      console.log("welcome world")
-      console.table(data)
-    })
-  }
+  // getGitRepo(){
+  //   this.getgitaccount.gitDataRepo(this.originalGitRepo).subscribe((data)=>{
+  //     this.repoGit = data;
+  //     console.log("welcome world")
+  //     console.table(data)
+  //   })
+  // }
 
   gitName(event: Event){
     this.username=(<HTMLInputElement>event.target).value
@@ -100,7 +112,7 @@ export class InputformComponent {
   nameOutput(){
     this.jina=true;
     // this.repeats.push(this.username)
-    this.identity= `Click The Display Button Below To Search For The Account : ${this.username}`
+    this.identity= `Click Display Below To See ${this.username}'s Account`
     // this.originalGit=(this.username).split(" ").join("")
     // this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
     //   this.accountShown=data
