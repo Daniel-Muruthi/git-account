@@ -19,16 +19,17 @@
 <div>
     <app-userlist [users]="users"></app-userlist>
 </div>
-<div class="card col-sm-9 mx-auto">
+<div class="card col-sm-9 mx-auto mb-4">
     <div class="row col-sm-9" style="display:flex; justify-content: space-between">
         <div class="col-sm-7 ppic" style="display:flex; flex-direction:column">
             <img src="{{gitImg}}" alt="User Pic" height="300px" width="300px" style="border-radius: 50%;" class="card p2"> 
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-5 mb-3">
             <h3 class="mt-2 mb-3">About</h3>
             <hr>
             <p class="text-primary font-weight-bold card p-2">USERNAME : {{repoName}}</p>
             <p class="text-primary text-uppercase font-weight-bold card p-2">Location : {{gitLocation}}</p>
+            <p class="card p-2 text-uppercase font-weight-bold text-primary mr-2">Repositories : {{repoNumber}}</p>
             <!-- <div class="btn btn-dark">
                 <a href="{{gitRepo}}" target="_blank" style="text-decoration: none; color: white;">Github Repos</a>
             </div> -->
