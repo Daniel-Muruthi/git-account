@@ -1,5 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { GetgitaccountService } from '../getgitaccount.service';
 
 @Component({
@@ -22,11 +23,17 @@ export class InputformComponent {
   gitRepo: string=''
   repoName= ''
 
+  
+
+  public originalGitRepo: any
+  public error_handler: any
+  repoGit: string[]=[]
+
+
   users: string[]=[]
 
   // accountShown: string[]=[]
 
-  
 
   constructor(private getgitaccount: GetgitaccountService) {
     //importing from our service class
@@ -44,6 +51,7 @@ export class InputformComponent {
     //   console.log(data)
     // })
 
+
     this.originalGit=(this.username).split(" ").join("")
     this.identityGit =fetch(`https://api.github.com/users/${this.originalGit}`).then((result)=>result.json()).then((data)=>{
       this.users = data
@@ -53,12 +61,38 @@ export class InputformComponent {
       this.gitIdentityName = JSON.stringify(data.login)
       this.repoName=(this.gitIdentityName).replace(/['"]+/g, '')
       this.gitRepo= `https://github.com/${this.repoName}?tab=repositories`
-
+      
+      
       this.gitImg = JSON.parse(data.avatar_url)
       // this.gitRepo= JSON.parse(data.repos_url)
+      document.getElementById("gitIframe")!.setAttribute('src', "'data:text/html;base64,' + encodeURIComponent(data['content'])")
+      
+      
+    })
     
+    this.getgitaccount.gitDataRepo(this.originalGitRepo).subscribe((data)=>{
+      this.repoGit = data;
+      console.log("welcome world")
+      console.table(data)
+    })
+
+    // this.repositories=fetch(`https://github.com/${this.repoName}?tab=repositories`,{mode: 'no-cors'}).then((result)=>result.json()).then((data)=>{
+    //   this.repo = data
+    //   this.idRepo=JSON.stringify(data)
+    //   console.table(` ${this.idRepo}`)
+
+    // })
+    
+  }
+
+  getGitRepo(){
+    this.getgitaccount.gitDataRepo(this.originalGitRepo).subscribe((data)=>{
+      this.repoGit = data;
+      console.log("welcome world")
+      console.table(data)
     })
   }
+
   gitName(event: Event){
     this.username=(<HTMLInputElement>event.target).value
   }

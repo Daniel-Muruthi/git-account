@@ -1,5 +1,5 @@
 <label style="font-size:x-large; font-weight:bolder;">GitHub UserName</label>
-<input type="text" class="form-control" [(ngModel)]="username">
+<input type="text" class="form-control" [(ngModel)]="username" [(ngModel)]="originalGitRepo">
 <!-- <p class="my-2" >You have entered: {{username}}</p> -->
 <button class="my-3 btn btn-dark" [disabled]="username===''" (click)="nameOutput()">Enter</button>
 <div >
@@ -27,11 +27,13 @@
             <p>Location: {{gitLocation}}</p>
             <div>
                 <h3>GitHub Repository</h3>
-                <iframe src="{{gitRepo}}" style="border: 1px solid black;">Repo</iframe>
+                <!-- <iframe id="gitIframe" src="{{repo}}" style="border: 1px solid black;"></iframe> -->
             </div>
+            <p *ngFor="let repo of repoGit">{{repo | json}}</p>
             <div class="btn btn-dark">
                 <a href="{{gitRepo}}" target="_blank" style="text-decoration: none; color: white;">Github Repos</a>
             </div>
+
         </div>
     </div>
 </div>
