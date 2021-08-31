@@ -28,6 +28,7 @@ export class InputformComponent {
   repoNameFinal="" //repo display on DoM
   gitFollowers=""
   gitFollowing=""
+  repoNumber=""
 
   
 
@@ -65,6 +66,7 @@ export class InputformComponent {
       this.gitLocation= data.location
       this.gitFollowers=data.followers
       this.gitFollowing=data.following
+      this.repoNumber=data.public_repos
       
       this.gitIdentityName = JSON.stringify(data.login)
       this.repoName=(this.gitIdentityName).replace(/['"]+/g, '')
